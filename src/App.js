@@ -1,6 +1,9 @@
 import { Fragment, useEffect } from 'react'
 
-import SearchBar from './components/layout/AppNavbar';
+import { Provider } from 'react-redux';
+import store from './store';
+
+import SearchBar from './components/layout/SearchBar';
 import AddBtn from './components/layout/AddBtn';
 import Logs from './components/logs/Logs';
 import AddLogModal from './components/logs/AddLogModal';
@@ -20,23 +23,25 @@ const App = () => {
   });
 
   return (
-    <Fragment>
-      <SearchBar />
-      <div className="container">
-        <AddBtn />
+    <Provider store={store}>
+      <Fragment>
+        <SearchBar />
+        <div className="container">
+          <AddBtn />
 
-        {/* Log Modals */}
-        <AddLogModal />
-        <EditLogModal />
+          {/* Log Modals */}
+          <AddLogModal />
+          <EditLogModal />
 
-        {/* Tech Modals */}
-        <AddTechModal />
-        <TechListModal />
+          {/* Tech Modals */}
+          <AddTechModal />
+          <TechListModal />
 
-        
-        <Logs />
-      </div>
-    </Fragment>
+          
+          <Logs />
+        </div>
+      </Fragment>
+    </Provider>
   );
 }
 
